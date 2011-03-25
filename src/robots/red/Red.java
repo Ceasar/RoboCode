@@ -4,14 +4,16 @@ import guns.AngularGun;
 
 import java.awt.Color;
 
+import bodies.WaveSurfer1;
+
 import robot.CJBRobot;
 
 
 public class Red extends CJBRobot{
 	
 	public Red(){
-		gun = new AngularGun(this);
-		body = new RedBody(this);
+		gun = new RedGun(this);
+		body = new WaveSurfer1(this);
 	}
 	
 	public void run() { 

@@ -10,6 +10,7 @@ import robocode.HitByBulletEvent;
 import robocode.ScannedRobotEvent;
 import robot.Body;
 import robot.RobotUtils;
+import robot.WaveHitEvent;
 
 public class BlueBody implements Body{
 
@@ -30,28 +31,6 @@ public class BlueBody implements Body{
 
 
 	public void onScannedRobot(ScannedRobotEvent e) {
-		double tries = 0;
-		double enemyAbsoluteBearing = robot.getHeadingRadians() + e.getBearingRadians();
-		double enemyDistance = e.getDistance();
-		Point2D robotLocation = new Point2D.Double(robot.getX(), robot.getY());
-		
-		Point2D enemyLocation = RobotUtils.project(robotLocation, enemyAbsoluteBearing, enemyDistance);
-		double angle = enemyAbsoluteBearing + Math.PI + direction; //Attempts to orbit the opponent, moving perpendicularly.
-		double distance = enemyDistance * (DEFAULT_EVASION - tries / 100.0);
-		Point2D robotDestination = RobotUtils.project(enemyLocation, angle, distance);
-		while (!fieldRectangle.contains(robotDestination) && tries < MAX_TRIES) {
-			tries++;
-			distance = enemyDistance * (DEFAULT_EVASION - tries / 100.0);
-			robotDestination = RobotUtils.project(enemyLocation, angle, distance);
-		}
-		double x = (RobotUtils.bulletVelocity(enemyFirePower) / REVERSE_TUNER) / enemyDistance;
-		double y = enemyDistance / RobotUtils.bulletVelocity(enemyFirePower) / WALL_BOUNCE_TUNER;
-		if (Math.random() < x || tries > y) {
-			direction = -direction;
-		}
-		angle = RobotUtils.absoluteBearing(robotLocation, robotDestination) - robot.getHeadingRadians();
-		robot.setAhead(Math.cos(angle) * 100);
-		robot.setTurnRightRadians(Math.tan(angle));
 	}
 
 
@@ -71,6 +50,13 @@ public class BlueBody implements Body{
 
 	@Override
 	public void onPaint(Graphics2D g) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void onCustomEvent(WaveHitEvent e) {
 		// TODO Auto-generated method stub
 		
 	}

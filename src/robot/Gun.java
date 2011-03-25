@@ -20,4 +20,6 @@ public interface Gun {
 
 	public void onPaint(Graphics2D g);
 
+	public void onWaveHitEvent(WaveHitEvent e);
+
 }

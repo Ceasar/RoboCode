@@ -9,6 +9,7 @@ import robocode.HitByBulletEvent;
 import robocode.ScannedRobotEvent;
 import robocode.util.Utils;
 import robot.Gun;
+import robot.WaveHitEvent;
 
 public class AngularGun implements Gun{
 	
@@ -74,6 +75,12 @@ public class AngularGun implements Gun{
 
 	@Override
 	public void onHitByBullet(HitByBulletEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onWaveHitEvent(WaveHitEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
