@@ -11,6 +11,10 @@ import robot.Body;
 import robot.RobotUtils;
 import robot.WaveHitEvent;
 
+/*
+ * An implemention of GFTargetingMovement. All credit to PEZ.
+ */
+
 public class OrbitalBody implements Body{
 
 	private static final double MAX_TRIES = 125;

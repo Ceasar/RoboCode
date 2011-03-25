@@ -12,21 +12,19 @@ import robot.Gun;
 import robot.WaveHitEvent;
 
 /*
- * Taken directly from Robowiki for testing purposes.
+ * Does nothing.
  */
 
-public class AngularGun implements Gun{
-	
-	private static final double BULLET_POWER = 1.92;
+public class LameGun implements Gun{
+	private static final double BULLET_POWER = 1.9;
 	
 	private AdvancedRobot robot;
 	private double oldEnemyHeading = 0;
 	
-	public AngularGun(AdvancedRobot robot){
+	public LameGun(AdvancedRobot robot){
 		this.robot = robot;
 	}
-
-	@Override
+	
 	public void onScannedRobot(ScannedRobotEvent e) {
 		double myX = robot.getX();
 		double myY = robot.getY();
@@ -60,16 +58,13 @@ public class AngularGun implements Gun{
 		 
 		robot.setTurnRadarRightRadians(Utils.normalRelativeAngle(absoluteBearing - robot.getRadarHeadingRadians()));
 		robot.setTurnGunRightRadians(Utils.normalRelativeAngle(theta - robot.getGunHeadingRadians()));
-		robot.fire(3);
-		
-	}
+    }
 
 	@Override
 	public void onPaint(Graphics2D g) {
 		// TODO Auto-generated method stub
 		
 	}
-
 
 	@Override
 	public void onBulletHit(BulletHitEvent e) {
@@ -88,4 +83,5 @@ public class AngularGun implements Gun{
 		// TODO Auto-generated method stub
 		
 	}
+	
 }
